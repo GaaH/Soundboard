@@ -4,7 +4,7 @@
 
 <ul>
     {% for sound in user.sound_set.all|slice:'10' %} 
-        <li><a href="#">{{ sound.title }}</a></li>    
+        <li><a href="{{ sound.get_absolute_url }}">{{ sound.title }}</a></li>    
     {% endfor %}
 </ul>
 
