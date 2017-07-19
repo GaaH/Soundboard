@@ -9,14 +9,14 @@
 </head>
 
 <body>
-    {% comment %} <ul class="menu">
+    <ul class="menu">
         <li><a href="{% url 'sounds:index' %}" class="button">Accueil</a></li>
         {% if user.is_authenticated %}
         <li><a href="{% url 'accounts:logout' %}" class="button">Se déconnecter</a></li>
         {% else %}
         <li><a href="{% url 'accounts:login' %}" class="button">Se connecter</a></li>
         {% endif %}
-    </ul> {% endcomment %}
+    </ul>
 
     {% if user.is_authenticated %} Hello {{ user }} {% endif %}
 
