@@ -1,0 +1,13 @@
+{% extends "sounds/base.html" %}
+
+{% block content %}
+
+<h1>Nouveau son</h1>
+
+<form action="{% url 'sounds:new' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <input type="submit" value="Ajouter" />
+</form>
+
+{% endblock %}
