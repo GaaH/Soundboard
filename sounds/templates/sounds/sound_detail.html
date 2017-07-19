@@ -1,0 +1,11 @@
+{% extends 'sounds/base.html' %}
+
+{% block content %}
+    <h1>{{ object.title }}</h1>
+
+    <audio controls autoplay>
+        <source src="{{ object.file.url }}" type="audio/mpeg" />
+    </audio>
+
+    <p>{{ object.description }}</p>
+{% endblock %}
