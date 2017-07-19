@@ -121,4 +121,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = 'D:/gaeta/Documents/Python/Soundboard/media/'
+MEDIA_URL = '/media/'
+
 LOGOUT_REDIRECT_URL = 'sounds:index'

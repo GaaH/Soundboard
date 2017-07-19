@@ -17,3 +17,7 @@ class SoundDetailView(DetailView):
 class NewSoundView(CreateView):
     model = Sound
     fields = ['title', 'file', 'description']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(NewSoundView, self).form_valid(form)
