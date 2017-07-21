@@ -1,12 +1,13 @@
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-from django.views.generic import CreateView, DetailView, TemplateView
+from django.views.generic import CreateView, DetailView, ListView, TemplateView
 
 from.models import Sound
 
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     template_name = 'sounds/index.html'
+    queryset = Sound.objects.order_by('-created_at')[:20]
 
 
 class SoundDetailView(DetailView):

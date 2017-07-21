@@ -4,5 +4,11 @@
 
 <h1>Soundboard</h1>
 
+<ul>
+    {% for sound in object_list %}
+        <li><a href="{% url 'sounds:detail' sound.pk %}">{{ sound }}</a></li>
+    {% endfor %}
+</ul>
+
 {% endblock content %}
 <h1>
