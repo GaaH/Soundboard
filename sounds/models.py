@@ -15,6 +15,9 @@ class Soundbox(models.Model):
     def __str__(self):
         return '{}: {}'.format(self.user, self.title)
 
+    def get_absolute_url(self):
+        return reverse('sounds:detail-box', args=(self.pk,))
+
 class Sound(models.Model):
     soundbox = models.ForeignKey(Soundbox, on_delete=models.CASCADE)
     file = models.FileField(upload_to='sounds')
@@ -23,4 +26,4 @@ class Sound(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
-        return reverse('sounds:detail', args=[self.pk])
+        return reverse('sounds:detail', args=(self.pk,))
