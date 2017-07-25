@@ -7,13 +7,15 @@
                 <h1>Soundboard</h1>
 
                 <p>
-                    Bienvenue sur Soundboard, l'hébergement 2.0 pour les amateurs de sons !
+                    Bienvenue sur Soundboard, l'hébergement 2.0 pour les amateurs de sons bons comme un bon bourbon !
                 </p>
 
                 <p>
                     {% if not user.is_authenticated %}
                     <a href="{% url 'accounts:signup' %}">Créer un compte</a> ou bien <a href="{% url 'accounts:login' %}">connectez vous</a>.
-                    {% else %} N'hésitez pas à <a href="#">uploader vos meilleurs sons</a> ! {% endif %}
+                    {% else %} 
+                    N'hésitez pas à uploader vos meilleurs sons en <a href="{% url 'sounds:new-box' %}">créant votre soundbox</a> !
+                    {% endif %}
                 </p>
             </div>
         </div>
