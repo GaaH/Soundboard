@@ -1,0 +1,14 @@
+{% extends 'sounds/base.html' %}
+
+{% block content %}
+    <h1>{{ object.title }}</h1>
+    <p>{{ object.description }}</p>
+
+    <ul>
+        {% for sound in object.sound_set.all %}
+        <li>
+            <a href="{{ sound.get_absolute_url }}">{{ sound }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
