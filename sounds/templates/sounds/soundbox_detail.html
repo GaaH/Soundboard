@@ -1,14 +1,31 @@
-{% extends 'sounds/base.html' %}
+{% extends 'sounds/base.html' %} {% block content %}
+<div class="container">
 
-{% block content %}
-    <h1>{{ object.title }}</h1>
-    <p>{{ object.description }}</p>
+    {% if request.user == object.user %}
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="{% url 'sounds:new' object.pk %}">
+                <span class="glyphicon glyphicon-plus"></span>
+                Ajouter un son
+            </a>
+        </div>
+    </div>
+    {% endif %}
 
-    <ul>
-        {% for sound in object.sound_set.all %}
-        <li>
-            <a href="{{ sound.get_absolute_url }}">{{ sound }}</a>
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>{{ object.title }}</h1>
+            <p>{{ object.description }}</p>
+
+            <ul>
+                {% for sound in object.sound_set.all %}
+                <li>
+                    <a href="{{ sound.get_absolute_url }}">{{ sound }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

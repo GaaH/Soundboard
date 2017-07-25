@@ -1,11 +1,27 @@
 {% extends 'sounds/base.html' %} {% block content %}
 
-<form action="{% url 'accounts:login' %}" method="post">
-    {% csrf_token %}
-     {{ form.username.label_tag}} {{ form.username }} 
-     {{ form.password.label_tag }} {{ form.password }}
+<div class="container">
+    <div class="col-xs-12">
+        <form action="{% url 'accounts:login' %}" method="post">
+            {% csrf_token %}
+            
+            {% for field in form %} 
+                <div class="form-group">
+                    {{ field.label }}
+                    {{ field }}
+                </div>
+            {% endfor %} 
 
-    <input type="submit" value="Se connecter" />
-</form>
+            <input type="submit" class="btn" value="Se connecter" />
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            Pas de compte ? <a href="{% url 'accounts:signup' %}">Créez en un</a> !
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}

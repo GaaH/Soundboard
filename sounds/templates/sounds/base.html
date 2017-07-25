@@ -6,19 +6,54 @@
 <head>
     <title>Soundboard</title>
     <meta charset="utf-8" />
+
+    <!-- JQuery  -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <ul class="menu">
-        <li><a href="{% url 'sounds:index' %}" class="button">Accueil</a></li>
-        {% if user.is_authenticated %}
-        <li><a href="{% url 'accounts:logout' %}" class="button">Se déconnecter</a></li>
-        {% else %}
-        <li><a href="{% url 'accounts:login' %}" class="button">Se connecter</a></li>
-        {% endif %}
-    </ul>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div class="navbar-brand"><a href="{% url 'sounds:index' %}">Soundboard</a></div>
+            </div>
 
-    {% if user.is_authenticated %} Hello {{ user }} {% endif %}
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="{% url 'sounds:index' %}">Sounds</a>
+                    </li>
+                </ul>
+
+                <!--Login  -->
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true">
+                            {{ user }} <spann class="caret"></spann>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'accounts:profile-connected' %}">Profile</a></li>
+                            <li><a href="{%  url 'accounts:logout' %}">Se déconnecter</a></li>
+                        </ul>
+                    </li>
+                    {% else %} 
+                        <li>
+                            <a href="{% url 'accounts:login' %}">Se connecter</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <div id="content">
         {% block content %} {% endblock %}

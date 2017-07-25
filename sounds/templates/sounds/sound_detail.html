@@ -1,11 +1,29 @@
-{% extends 'sounds/base.html' %}
+{% extends 'sounds/base.html' %} {% block content %}
 
-{% block content %}
-    <h1>{{ object.title }}</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>{{ object.title }}</h1>
 
-    <audio controls autoplay>
-        <source src="{{ object.file.url }}" type="audio/mpeg" />
-    </audio>
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <audio class="media-object" controls autoplay>
+                            <source src="{{ object.file.url }}" type="audio/mpeg" />
+                        </audio>
+                    </a>
 
-    <p>{{ object.description }}</p>
+                </div>
+
+                <div class="media-body">
+                    <p>{{ object.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 {% endblock %}

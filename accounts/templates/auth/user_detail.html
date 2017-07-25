@@ -1,12 +1,42 @@
 {% extends "sounds/base.html" %} {% block content %}
 
-<h1>Profil de {{ user }}</h1>
+<div class="container">
+    {% if request.user == user %}
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="{% url 'sounds:new-box' %}">
+                <span class="glyphicon glyphicon-plus"></span>
+                Créer une soundbox
+            </a>
+        </div>
+    </div>
+    {% endif %}
 
-<ul>
-    {% for sound in user.sound_set.all|slice:'10' %} 
-        <li><a href="{{ sound.get_absolute_url }}">{{ sound.title }}</a></li>    
-    {% endfor %}
-</ul>
+    <div class="row">
+
+        <div class="well">
+            <div class="col-cs-12">
+                <h1>Profil de {{ user }}</h1>
+
+                <p>Biographie</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-cs-12">
+            <h3>Ses soundboxes</h3>
+
+            <ul>
+                {% for soundbox in user.soundbox_set.all|slice:'10' %}
+                <li><a href="{{ soundbox.get_absolute_url }}">{{ soundbox.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+
 
 {% endblock content %}
 

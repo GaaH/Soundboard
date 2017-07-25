@@ -1,13 +1,21 @@
-{% extends "sounds/base.html" %}
+{% extends "sounds/base.html" %} {% block content %}
 
-{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Nouvelle soundbox</h1>
+            <form action="{% url 'sounds:new-box' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %} {% for field in form %}
+                <div class="form-group">
+                    {{ field.label }} {{ field }}
+                </div>
+                {% endfor %}
 
-<h1>Nouvelle soundbox</h1>
+                <input type="submit" class="btn" value="Ajouter" />
+            </form>
 
-<form action="{% url 'sounds:new-box' %}" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_table }}
-    <input type="submit" value="Ajouter" />
-</form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
